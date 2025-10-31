@@ -132,6 +132,14 @@ $(this).fadeTo("fast", 0.8);
         );
     });
 </script> -->
+
+<script type="text/javascript" src="https://cdn.emailjs.com/sdk/3.12/email.min.js"></script> 
+<script>
+emailjs.init({
+    publicKey: "faYv5s0bSEIkDpmvb",
+});
+</script>
+
 </head>
 
 <body>
@@ -356,8 +364,6 @@ window.addEventListener("load", () => {
         </style>
 
         <!-- Email -->
-      
-        <script type="text/javascript" src="https://cdn.emailjs.com/sdk/3.12/email.min.js"></script> 
         <script>  
             function Randcaptcha(){
                 const chars="ABCDEFGHJKLMNPQRSTUVWXYZ123456789@#$%&*"
@@ -371,10 +377,6 @@ window.addEventListener("load", () => {
 
             let current=Randcaptcha();
             
-            emailjs.init({
-                publicKey: "faYv5s0bSEIkDpmvb",
-            }); //API key
-
             document.getElementById("contact_form").addEventListener("submit", function(event){
                 event.preventDefault(); 
 
