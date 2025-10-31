@@ -133,12 +133,11 @@ $(this).fadeTo("fast", 0.8);
     });
 </script> -->
 
-<!-- 
 <script type="text/javascript" src="https://cdn.emailjs.com/sdk/3.12/email.min.js"></script> 
 <script>
 emailjs.init({
     publicKey: "faYv5s0bSEIkDpmvb",
-}); -->
+});
 </script>
 
 </head>
@@ -367,7 +366,7 @@ window.addEventListener("load", () => {
         </style>
 
         <!-- Email -->
-        <!-- <script>  
+        <script>  
             function Randcaptcha(){
                 const chars="ABCDEFGHJKLMNPQRSTUVWXYZ123456789@#$%&*"
                 let captcha="";
@@ -402,53 +401,8 @@ window.addEventListener("load", () => {
                     alert("Failed to send message: " + JSON.stringify(error));
                 });
             });
-        </script> -->
+        </script>
 
-        <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-        <script>
-        emailjs.init("faYv5s0bSEIkDpmvb"); // your public key
-
-
-        function generateCaptcha() {
-        const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
-        let captcha = "";
-        for (let i = 0; i < 5; i++) {
-        captcha += chars.charAt(Math.floor(Math.random() * chars.length));
-        }
-        document.getElementById("captcha-text").innerText = captcha;
-        return captcha;
-        }
-
-
-        let currentCaptcha = generateCaptcha();
-
-
-        document.getElementById('contact-form').addEventListener('submit', async function(event) {
-        event.preventDefault();
-
-
-        const enteredCaptcha = document.getElementById('captcha-input').value.trim().toUpperCase();
-        if (enteredCaptcha !== currentCaptcha) {
-        document.getElementById('status-message').innerText = "Incorrect captcha, please try again.";
-        currentCaptcha = generateCaptcha();
-        return;
-        }
-
-
-        document.getElementById('status-message').innerText = "Sending...";
-
-
-        try {
-        await emailjs.sendForm('service_cxg9nk8', 'template_84wdpxi', this);
-        document.getElementById('status-message').innerText = "Message sent successfully!";
-        this.reset();
-        currentCaptcha = generateCaptcha();
-        } catch (err) {
-        document.getElementById('status-message').innerText = "Failed to send message. Please try again later.";
-        console.error(err);
-        }
-});
-</script>
 </body>
 </html>
 
