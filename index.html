@@ -364,7 +364,7 @@ window.addEventListener("load", () => {
         </style>
 
         <!-- Email -->
-        <script>  
+        <!-- <script>  
             function Randcaptcha(){
                 const chars="ABCDEFGHJKLMNPQRSTUVWXYZ123456789@#$%&*"
                 let captcha="";
@@ -399,7 +399,39 @@ window.addEventListener("load", () => {
                     alert("Failed to send message: " + JSON.stringify(error));
                 });
             });
-        </script>
+        </script> -->
+
+    <script>
+    function Randcaptcha(){
+         const chars="ABCDEFGHJKLMNPQRSTUVWXYZ123456789@#$%&*"
+            let captcha="";
+            for (let i = 0; i < 6; i++) {
+                captcha += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+                document.getElementById("captcha").innerText = captcha;
+                return captcha;
+            }
+    
+    let current = Randcaptcha();
+
+    document.getElementById("contact_form").addEventListener("submit", function(event){
+        event.preventDefault(); 
+        const input = document.getElementById('captcha-input').value.trim().toUpperCase();
+        if(input !== current){
+            alert("Invalid Captcha please try again!");
+            current = Randcaptcha();
+            return;
+        }
+
+        emailjs.sendForm("service_cxg9nk8","template_84wdpxi",this)
+        .then(() => {
+            alert("Message sent successfully!");
+            this.reset();
+            current = Randcaptcha();
+        })
+        .catch(error => alert("Error: " + JSON.stringify(error)));
+    });
+    </script>
 
 </body>
 </html>
